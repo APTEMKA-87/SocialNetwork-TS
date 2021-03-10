@@ -3,7 +3,6 @@ import {PostType} from '../../../redux/state';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
 
-
 type PropsType = {
     posts: Array<PostType>
     addPost: () => void
@@ -13,7 +12,7 @@ type PropsType = {
 
 const MyPosts: React.FC<PropsType> = (props) => {
 
-    let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
+    let postsElement = props.posts.map((p,i) => <Post key={i} message={p.message} likesCount={p.likesCount}/>);
 
     let addPost = () => {
         props.addPost()
