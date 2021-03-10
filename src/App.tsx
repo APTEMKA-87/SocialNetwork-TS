@@ -8,7 +8,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import state, {StateType, updateNewPostText} from './redux/state';
 
 
-type AppPropsType = {
+type AppPropsType = {      // разобраться где должна лежать типизация
     state: StateType
     addPost: () => void
     updateNewPostText: (postMessage: string) => void
