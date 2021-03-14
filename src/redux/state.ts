@@ -83,20 +83,7 @@ const store: StoreType = {
             ],
         }
     },
-    /*updateNewPostText (newText: string)  {
-        this._state.profilePage.newPostText = newText
-        this.rerenderEntireTree()
-    },
-    addPost () {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this.rerenderEntireTree()
-    },*/
+
     subscribe (observer) {
         this.rerenderEntireTree = observer
     },
@@ -122,5 +109,17 @@ const store: StoreType = {
         }
     }
 }
+
+export const addPostActionCreator = ():AddPostActionType => {
+    return {
+        type: 'ADD-POST',
+    }
+}
+
+export const updateNewPostTextActionCreator = (text: string):UpdateNewPostActionType => {
+    return {type: 'UPDATE-NEW-POST', newText: text}
+}
+
+
 
 export default store;
