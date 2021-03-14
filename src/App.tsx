@@ -24,11 +24,9 @@ const App: React.FC<AppPropsType> = (props) => {
                                                   messages={state.dialogsPage.messages}/>}/>
                     <Route path="/profile"
                            render={() => <Profile
-                               dispatch={props.store.dispatch.bind(props.store)} // мог не туда вкорячить
+                               dispatch={props.store.dispatch.bind(props.store)}
                                posts={state.profilePage.posts}
                                newPostText={state.profilePage.newPostText}
-                               //addPost={props.store.addPost.bind(props.store)}
-                               //updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                            />}/>
                 </div>
             </div>
