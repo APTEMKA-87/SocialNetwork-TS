@@ -32,26 +32,13 @@ export type StateType = {
 
 export type StoreType = {
     _state: StateType
-    /*updateNewPostText: (newText: string) => void
-    addPost: () => void*/
     subscribe: (observer: () => void) => void
     rerenderEntireTree: () => void
     getState: () => StateType
     dispatch: (action: ActionsTypes) => void
 }
 
-export type AddPostActionType = {
-    type: 'ADD-POST'
-}
-
-export type UpdateNewPostActionType = {
-    type: 'UPDATE-NEW-POST'
-    newText: string
-}
-
-export type ActionsTypes = AddPostActionType | UpdateNewPostActionType
-
-
+export type ActionsTypes = ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator>
 
 const store: StoreType = {
     _state: {
@@ -84,10 +71,10 @@ const store: StoreType = {
         }
     },
 
-    subscribe (observer) {
+    subscribe(observer) {
         this.rerenderEntireTree = observer
     },
-    rerenderEntireTree () {
+    rerenderEntireTree() {
         console.log('State changed')
     },
     getState() {
@@ -110,16 +97,15 @@ const store: StoreType = {
     }
 }
 
-export const addPostActionCreator = ():AddPostActionType => {
+export const addPostActionCreator = (newText: string) => {
     return {
         type: 'ADD-POST',
+        newText: newText
     }
 }
 
-export const updateNewPostTextActionCreator = (text: string):UpdateNewPostActionType => {
+export const updateNewPostTextActionCreator = (text: string) => {
     return {type: 'UPDATE-NEW-POST', newText: text}
 }
-
-
 
 export default store;

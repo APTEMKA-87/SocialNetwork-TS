@@ -14,7 +14,7 @@ const MyPosts: React.FC<PropsType> = (props) => {
     let postsElement = props.posts.map((p, i) => <Post key={i} message={p.message} likesCount={p.likesCount}/>);
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.dispatch(addPostActionCreator(props.newPostText)) // хз НьюПостТекст наугад
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
