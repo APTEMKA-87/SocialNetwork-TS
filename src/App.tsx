@@ -5,19 +5,13 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
-import store, {StateType, StoreType} from './redux/state';
+import store, {ActionsTypes, StateType, StoreType} from './redux/state';
 
-export type PropsType = {
+type AppPropsType = {
     store: StoreType
 }
 
-type AppPropsType = {      // разобраться где должна лежать типизация
-    state: StateType
-    addPost: () => void
-    updateNewPostText: (postMessage: string) => void
-}
-
-const App: React.FC<PropsType> = (props) => {
+const App: React.FC<AppPropsType> = (props) => {
     const state = props.store.getState()
     return (
         <BrowserRouter>
@@ -29,10 +23,13 @@ const App: React.FC<PropsType> = (props) => {
                            render={() => <Dialogs dialogs={state.dialogsPage.dialogs}
                                                   messages={state.dialogsPage.messages}/>}/>
                     <Route path="/profile"
-                           render={() => <Profile posts={state.profilePage.posts}
-                                                  newPostText={state.profilePage.newPostText}
-                                                  addPost={props.store.addPost.bind(props.store)}
-                                                  updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
+                           render={() => <Profile
+                               dispatch={props.store.dispatch.bind(props.store)} // мог не туда вкорячить
+                               posts={state.profilePage.posts}
+                               newPostText={state.profilePage.newPostText}
+                               //addPost={props.store.addPost.bind(props.store)}
+                               //updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                           />}/>
                 </div>
             </div>
         </BrowserRouter>

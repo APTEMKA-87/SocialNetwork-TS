@@ -37,7 +37,21 @@ export type StoreType = {
     subscribe: (observer: () => void) => void
     rerenderEntireTree: () => void
     getState: () => StateType
+    dispatch: (action: ActionsTypes) => void
 }
+
+type AddPostActionType = {
+    type: 'ADD-POST'
+}
+
+type UpdateNewPostActionType = {
+    type: 'UPDATE-NEW-POST'
+    newText: string
+}
+
+export type ActionsTypes = AddPostActionType | UpdateNewPostActionType
+
+
 
 const store: StoreType = {
     _state: {
@@ -91,6 +105,21 @@ const store: StoreType = {
     },
     getState() {
         return this._state
+    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this.rerenderEntireTree()
+        } else if (action.type === 'UPDATE-NEW-POST') {
+            this._state.profilePage.newPostText = action.newText
+            this.rerenderEntireTree()
+        }
     }
 }
 
