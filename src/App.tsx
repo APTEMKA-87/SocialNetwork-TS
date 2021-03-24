@@ -5,10 +5,11 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {StoreType} from './redux/state';
+import {StoreType} from './redux/store';
+import {AppStoreType} from './redux/redux-store';
 
 type AppPropsType = {
-    store: StoreType
+    store: AppStoreType
 }
 
 const App: React.FC<AppPropsType> = (props) => {

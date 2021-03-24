@@ -3,10 +3,10 @@ import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from '../../redux/dialogsReducer';
-import {StoreType} from '../../redux/state'
+import {AppStoreType} from '../../redux/redux-store';
 
 export type DialogsPropsType = {
-    store: StoreType
+    store: AppStoreType
 }
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
