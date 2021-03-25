@@ -1,6 +1,6 @@
 import {ActionsTypes, DialogsPageType} from './store';
 
-let initialState = {
+let initialState: DialogsPageType = {
     messages: [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'How is your IT'},

@@ -1,9 +1,4 @@
-import {ActionsTypes, ProfilePageType} from './store';
-
-export type AddPostActionType = {
-    type: 'ADD-POST',
-    newText: string
-}
+import {ActionsTypes} from './store';
 
 let initialState = {
     newPostText: '',
