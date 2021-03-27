@@ -16,7 +16,6 @@ type MapDispatchPropsType = {
     addPost: () => void
 }
 
-
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         posts: state.profilePage.posts, // пост массив

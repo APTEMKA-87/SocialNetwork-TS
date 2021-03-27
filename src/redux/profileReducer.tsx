@@ -8,7 +8,6 @@ let initialState = {
         {id: 3, message: 'Second post', likesCount: 5},
         {id: 4, message: 'Last post', likesCount: 8},
     ]
-
 }
 
 export const profileReducer = (state = initialState, action: ActionsTypes) => {
@@ -19,16 +18,17 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
                 message: state.newPostText,
                 likesCount: 0
             }
-            let stateCopy = {...state}
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy
+            return  {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            }
         }
         case 'UPDATE-NEW-POST': {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newText
-            return stateCopy
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         }
     }
     return state
