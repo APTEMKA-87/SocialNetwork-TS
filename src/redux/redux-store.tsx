@@ -8,7 +8,6 @@ let rootReducer = combineReducers({
 })
 
 let store = createStore(rootReducer)
-export type AppStoreType = typeof store
 export type AppStateType = ReturnType<typeof rootReducer>
 
 
