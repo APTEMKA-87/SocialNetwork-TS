@@ -3,14 +3,21 @@ type UsersLocation = {
     country: string
 }
 
+type PhotosType = {
+    small: string
+    large: string
+}
+
 export type UserType = {
     id: number
-    photoUrl: string
+    photos: PhotosType
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: UsersLocation
 }
+
+
 
 export type InitialStateType = {
     users: Array<UserType>
@@ -21,11 +28,7 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 
 let initialState: InitialStateType = {
-    users: [
-        {id: 1, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgT03-9KI-FAAGe6qPJCzkQ9Lv7GH7hgmgzg&usqp=CAU', followed: false, fullName: 'Dmitry', status: 'Boss', location: {city: 'Minsk', country: 'Belarus'}},
-        {id: 2, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgT03-9KI-FAAGe6qPJCzkQ9Lv7GH7hgmgzg&usqp=CAU',followed: true, fullName: 'Sasha', status: 'Boss', location: {city: 'Moscow', country: 'Russia'}},
-        {id: 3, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgT03-9KI-FAAGe6qPJCzkQ9Lv7GH7hgmgzg&usqp=CAU',followed: false, fullName: 'Andrew', status: 'Boss', location: {city: 'Kiev', country: 'Ukraine'}},
-    ]
+    users: []
 }
 
 type ActionsType = FollowActionType | UnfollowActionType | SetUsersActionType
