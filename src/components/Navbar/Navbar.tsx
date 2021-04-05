@@ -10,6 +10,9 @@ const Navbar: React.FC = () => {
             <div className={`${s.item} ${s.active}`}>
                 <NavLink to="/dialogs" activeClassName={s.active}>Messages</NavLink>
             </div>
+            <div className={`${s.item} ${s.active}`}>
+                <NavLink to="/users" activeClassName={s.active}>Users</NavLink>
+            </div>
             <div className={s.item}>
                 <a>News</a>
             </div>
