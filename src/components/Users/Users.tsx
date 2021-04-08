@@ -31,7 +31,7 @@ export let Users = (props:PropsType) => {
             })}
         </div>
         {
-            props.users.map((u:any) => <div key={u.id}>
+            props.users.map((u) => <div key={u.id}>
                 <span>
                     <div>
                         <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto}/>
