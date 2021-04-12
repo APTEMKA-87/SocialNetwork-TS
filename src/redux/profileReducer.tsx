@@ -11,13 +11,33 @@ let initialState = {
     profile: null ,    //null as null | ProfileType
 }
 
-type InitialType = {
+type InitialType = {              // type InitialType = typeof initialState
     newPostText: string
     posts: Array<PostType>
     profile: null | ProfileType
 }
 
-// type InitialType = typeof initialState
+export type ProfileType = {
+    "aboutMe": string
+    "contacts": {
+        "facebook": null | string
+        "website": null | string
+        "vk": null | string
+        "twitter": null | string
+        "instagram": null | string
+        "youtube": null | string
+        "github": null | string
+        "mainLink": null | string
+    },
+    "lookingForAJob": boolean
+    "lookingForAJobDescription": null | string
+    "fullName": string
+    "userId": number
+    "photos": {
+        "small": null | string
+        "large": null | string
+    }
+}
 
 export const profileReducer = (state: InitialType = initialState, action: ActionsTypes): InitialType => {
     switch (action.type) {
@@ -50,24 +70,3 @@ export const addPostActionCreator = () => ({type: 'ADD-POST',} as const)
 export const updateNewPostTextActionCreator = (text: string) => ({type: 'UPDATE-NEW-POST', newText: text} as const)
 export const setUserProfile = (profile: ProfileType) => ({type: 'SET_USER_PROFILE',profile} as const)
 
-export type ProfileType = {
-    "aboutMe": string
-    "contacts": {
-        "facebook": null | string
-        "website": null | string
-        "vk": null | string
-        "twitter": null | string
-        "instagram": null | string
-        "youtube": null | string
-        "github": null | string
-        "mainLink": null | string
-    },
-    "lookingForAJob": boolean
-    "lookingForAJobDescription": null | string
-    "fullName": string
-    "userId": number
-    "photos": {
-        "small": null | string
-        "large": null | string
-    }
-}
