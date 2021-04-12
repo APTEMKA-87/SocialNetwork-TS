@@ -1,4 +1,4 @@
-import {ActionsTypes} from './store';
+import {ActionsTypes, PostType} from './store';
 
 let initialState = {
     newPostText: '',
@@ -7,10 +7,19 @@ let initialState = {
         {id: 2, message: 'It is my first post', likesCount: 15},
         {id: 3, message: 'Second post', likesCount: 5},
         {id: 4, message: 'Last post', likesCount: 8},
-    ]
+    ] ,
+    profile: null ,    //null as null | ProfileType
 }
 
-export const profileReducer = (state = initialState, action: ActionsTypes) => {
+type InitialType = {
+    newPostText: string
+    posts: Array<PostType>
+    profile: null | ProfileType
+}
+
+// type InitialType = typeof initialState
+
+export const profileReducer = (state: InitialType = initialState, action: ActionsTypes): InitialType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost = {
@@ -18,7 +27,7 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
                 message: state.newPostText,
                 likesCount: 0
             }
-            return  {
+            return {
                 ...state,
                 posts: [...state.posts, newPost],
                 newPostText: ''
@@ -30,11 +39,35 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
                 newPostText: action.newText
             }
         }
+        case 'SET_USER_PROFILE': {
+            return {...state, profile: action.profile}
+        }
     }
     return state
 }
 
-export const addPostActionCreator = () => ({
-    type: 'ADD-POST',
-} as const)
+export const addPostActionCreator = () => ({type: 'ADD-POST',} as const)
 export const updateNewPostTextActionCreator = (text: string) => ({type: 'UPDATE-NEW-POST', newText: text} as const)
+export const setUserProfile = (profile: ProfileType) => ({type: 'SET_USER_PROFILE',profile} as const)
+
+export type ProfileType = {
+    "aboutMe": string
+    "contacts": {
+        "facebook": null | string
+        "website": null | string
+        "vk": null | string
+        "twitter": null | string
+        "instagram": null | string
+        "youtube": null | string
+        "github": null | string
+        "mainLink": null | string
+    },
+    "lookingForAJob": boolean
+    "lookingForAJobDescription": null | string
+    "fullName": string
+    "userId": number
+    "photos": {
+        "small": null | string
+        "large": null | string
+    }
+}

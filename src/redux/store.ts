@@ -1,4 +1,9 @@
-import {addPostActionCreator, profileReducer, updateNewPostTextActionCreator} from './profileReducer';
+import {
+    addPostActionCreator,
+    profileReducer, ProfileType,
+    setUserProfile,
+    updateNewPostTextActionCreator
+} from './profileReducer';
 import {dialogsReducer, sendMessageActionCreator, updateNewMessageBodyActionCreator} from './dialogsReducer';
 
 export type PostType = {
@@ -20,6 +25,7 @@ export type MessageType = {
 export type ProfilePageType = {
     newPostText: string
     posts: PostType[]
+    profile: null | ProfileType
 
 }
 
@@ -46,6 +52,8 @@ export type ActionsTypes =  ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof updateNewPostTextActionCreator>
     | ReturnType<typeof updateNewMessageBodyActionCreator>
     | ReturnType<typeof sendMessageActionCreator>
+    | ReturnType<typeof setUserProfile>
+
 
 const store: StoreType = {
     _state: {
@@ -56,7 +64,8 @@ const store: StoreType = {
                 {id: 2, message: 'It is my first post', likesCount: 15},
                 {id: 3, message: 'Second post', likesCount: 5},
                 {id: 4, message: 'Last post', likesCount: 8},
-            ]
+            ],
+            profile: null
 
         },
         dialogsPage: {
