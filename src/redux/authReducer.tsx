@@ -1,7 +1,7 @@
 export type InitialStateType = {
-    id: any,
-    email: any,
-    login: any,
+    id: number | null,
+    email: string | null,
+    login: string | null,
     isAuth: boolean
 }
 
