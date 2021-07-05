@@ -12,7 +12,7 @@ type PropsType = {
     users: Array<UserType>
     unfollow: (userId: number) => void,
     follow: (userId: number) => void,
-    followingInProgress: any             // разобраться с  типами
+    followingInProgress: any             // fix type
 }
 
 export let Users = (props: PropsType) => {

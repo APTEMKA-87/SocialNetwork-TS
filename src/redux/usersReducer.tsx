@@ -25,7 +25,7 @@ export type InitialStateType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: any   // bolean
+    followingInProgress: any   // fix type
 }
 
 const FOLLOW = 'FOLLOW'
