@@ -48,7 +48,6 @@ export const setAuthUserData = (id: number, email: string, login: string): any =
     id,
     email,
     login
-
 })
 
 export const getAuthUserData = () => (dispatch: any) => {
