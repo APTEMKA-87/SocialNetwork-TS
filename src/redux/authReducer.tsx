@@ -43,12 +43,20 @@ export type setUserDataActionType = {
 
 }
 
+export const setAuthUserData = (id: number, email: string, login: string): any => ({
+    type: 'SET_AUTH_USER_DATA',
+    id,
+    email,
+    login
+
+})
+
 export const getAuthUserData = () => (dispatch: any) => {
     authApi.me()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, email, login} = response.data.data
-                dispatch.setAuthUserData(id, email, login)
+                dispatch(setAuthUserData(id, email, login))
             }
         })
 }
