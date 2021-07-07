@@ -3,11 +3,9 @@ import {AppStateType} from '../../redux/reduxStore';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 import {DialogsPageType} from '../../redux/store';
-import {Dispatch} from 'redux'
-import {Redirect} from 'react-router-dom';
-import React from 'react';
+import {compose, Dispatch} from 'redux'
+import React, {ComponentType} from 'react';
 import {withAuthRedirect} from '../../hok/withAuthRedirect';
-import ProfileContainer from '../Profile/ProfileContainer';
 
 type MapStatePropsType = {
     dialogsPage: DialogsPageType
@@ -39,8 +37,7 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
-
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
-
-export default DialogsContainer
+export default compose<ComponentType> (
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs)
