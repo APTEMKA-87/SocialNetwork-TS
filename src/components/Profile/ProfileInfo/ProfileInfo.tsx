@@ -17,7 +17,7 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
                 src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"/>*/}
             <div className={s.discriptionBlock}>
                 <img src={props.profile.photos.large!== null ? props.profile.photos.large : ''} alt={'#'}/>
-                <ProfileStatus status={props.status}/>
+                <ProfileStatus status={props.status} updateStatus = {props.updateStatus}/>
             </div>
         </div>
     )

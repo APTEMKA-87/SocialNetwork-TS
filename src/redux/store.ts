@@ -1,6 +1,6 @@
 import {
     addPostActionCreator,
-    profileReducer, ProfileType,
+    profileReducer, ProfileType, setStatus,
     setUserProfile,
     updateNewPostTextActionCreator
 } from './profileReducer';
@@ -53,6 +53,7 @@ export type ActionsTypes =  ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof updateNewMessageBodyActionCreator>
     | ReturnType<typeof sendMessageActionCreator>
     | ReturnType<typeof setUserProfile>
+    | ReturnType<typeof setStatus>
 
 const store: StoreType = {
     _state: {

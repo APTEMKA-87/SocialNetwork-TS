@@ -1,14 +1,14 @@
 import React from 'react';
-import {ProfileType} from '../../../redux/profileReducer';
 
 type ProfileStatusType = {
-    status:string
-    }
+    status: string
+}
 
 class ProfileStatus extends React.Component<ProfileStatusType> {
 
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
     activateEditMode = () => {
@@ -21,6 +21,14 @@ class ProfileStatus extends React.Component<ProfileStatusType> {
         this.setState({
             editMode: false
         })
+        this.props.updateStatus(this.props.status)
+    }
+
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+
     }
 
     render() {
@@ -28,12 +36,12 @@ class ProfileStatus extends React.Component<ProfileStatusType> {
             <div>
                 {!this.state.editMode &&
                 <div>
-                    <span onDoubleClick={ this.activateEditMode }> {this.props.status} </span>
+                    <span onDoubleClick={this.activateEditMode}> {this.props.status} </span>
                 </div>
                 }
                 {!this.state.editMode &&
                 <div>
-                    <input autoFocus={true} onBlur={this.deactivateEditMode} value={this.props.status}/>
+                    <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}/>
                 </div>
                 }
             </div>
