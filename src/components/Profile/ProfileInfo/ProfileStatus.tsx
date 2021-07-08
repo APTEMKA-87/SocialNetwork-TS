@@ -2,7 +2,7 @@ import React from 'react';
 import {ProfileType} from '../../../redux/profileReducer';
 
 type ProfileStatusType = {
-    status: ProfileType | null
+    status:string
     }
 
 class ProfileStatus extends React.Component<ProfileStatusType> {

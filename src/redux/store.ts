@@ -26,7 +26,7 @@ export type ProfilePageType = {
     newPostText: string
     posts: PostType[]
     profile: null | ProfileType
-
+    status: any                     //fix type
 }
 
 export type DialogsPageType = {
@@ -54,10 +54,10 @@ export type ActionsTypes =  ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof sendMessageActionCreator>
     | ReturnType<typeof setUserProfile>
 
-
 const store: StoreType = {
     _state: {
         profilePage: {
+            status: '',
             newPostText: '',
             posts: [
                 {id: 1, message: 'Hi, how are you?', likesCount: 10},
@@ -98,7 +98,6 @@ const store: StoreType = {
         return this._state
     },
     dispatch(action) {
-
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
             this.rerenderEntireTree()

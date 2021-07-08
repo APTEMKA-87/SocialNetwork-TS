@@ -11,16 +11,17 @@ type PathParamsType = {
     userId: string
 }
 
-type MapstatePropsType = {
+type MapStatePropsType = {
     profile: ProfileType | null,
-    isAuth: any                              //fix type
+    isAuth: boolean
+    status: string
 }
 
 type MapDispatchPropsType = {
     getUserProfile: (userId: number) => void
 }
 
-type OwnPropsType = MapstatePropsType & MapDispatchPropsType
+type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 class ProfileContainer extends React.Component<PropsType> {
@@ -34,14 +35,15 @@ class ProfileContainer extends React.Component<PropsType> {
 
     render() {
         return (
-            <Profile {...this.props} profile={this.props.profile}/>
+            <Profile {...this.props} profile={this.props.profile} status={this.props.status}/>
         )
     }
 }
 
-let mapStateToProps = (state: AppStateType): MapstatePropsType => ({
+let mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    status: state.profilePage.status
 })
 
 export default compose<ComponentType>(

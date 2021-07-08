@@ -9,17 +9,18 @@ let initialState = {
         {id: 3, message: 'Second post', likesCount: 5},
         {id: 4, message: 'Last post', likesCount: 8},
     ] ,
-    profile: null ,    //null as null | ProfileType
+    profile: null ,
+    status: 'STATUS'
 }
 
-type InitialType = {              // type InitialType = typeof initialState
+type InitialType = {
     newPostText: string
     posts: Array<PostType>
     profile: null | ProfileType
+    status: string
 }
 
 export type ProfileType = {
-    "status": boolean               // можно ли вкорячить сюда статус
     "aboutMe": string
     "contacts": {
         "facebook": null | string
