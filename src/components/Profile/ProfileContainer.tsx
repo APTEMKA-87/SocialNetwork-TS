@@ -18,6 +18,8 @@ type MapStatePropsType = {
 
 type MapDispatchPropsType = {
     getUserProfile: (userId: number) => void
+    updateStatus: (status: string) => void
+    getStatus: (userId: number) => void
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
@@ -30,7 +32,7 @@ class ProfileContainer extends React.Component<PropsType> {
             userId = '2'
         }
         this.props.getUserProfile(+userId)
-        this.props.getStatus(userId)
+        this.props.getStatus(+userId)
     }
 
     render() {

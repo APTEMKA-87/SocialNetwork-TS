@@ -80,7 +80,7 @@ export const profileReducer = (state: InitialType = initialState, action: Action
 export const addPostActionCreator = () => ({type: 'ADD-POST',} as const)
 export const updateNewPostTextActionCreator = (text: string) => ({type: 'UPDATE-NEW-POST', newText: text} as const)
 export const setUserProfile = (profile: ProfileType) => ({type: 'SET_USER_PROFILE',profile} as const)
-export const setStatus = ({type: 'SET_STATUS', status} as const)
+export const setStatus = (status: string) => ({type: 'SET_STATUS', status} as const)
 export const getUserProfile = (userId: number) => (dispatch: any) => {
     usersApi.getProfile(userId)
         .then(response => {

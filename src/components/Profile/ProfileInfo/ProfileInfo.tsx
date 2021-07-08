@@ -6,6 +6,7 @@ import ProfileStatus from './ProfileStatus'
 type PropsType = {
     profile: ProfileType | null
     status: string
+    updateStatus: (status: string) => void
 }
 const ProfileInfo: React.FC<PropsType> = (props) => {
     if (!props.profile) {
