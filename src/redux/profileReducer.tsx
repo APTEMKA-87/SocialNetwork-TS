@@ -19,6 +19,7 @@ type InitialType = {              // type InitialType = typeof initialState
 }
 
 export type ProfileType = {
+    "status": boolean               // можно ли вкорячить сюда статус
     "aboutMe": string
     "contacts": {
         "facebook": null | string
